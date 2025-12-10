@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: arial;
+}
+
+.cat-summary-grid {
+  margin-top: 50px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.cat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 30px 30px 30px;
+  border: 1px solid gray;
+}
+
+.breed-btn {
+  background-color: rgb(46, 164, 79);
+  border: 1px solid white;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+}
+
+@media (max-width: 2000px) {
+  .cat-summary-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+/* This @media means when the screen width is 1600px or
+   less, we will divide the grid into 6 columns. */
+@media (max-width: 1600px) {
+  .cat-summary-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1300px) {
+  .cat-summary-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .cat-summary-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .cat-summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .cat-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .cat-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.price {
+  color: red;
+  font-weight: bold;
+  padding: 10px 0;
+}
+.rating {
+  width: 90%;
+}
+.ratio {
+  display: flex;
+  align-items: baseline;
+  width: 80%;
+}
+.rate {
+  font-weight: 600;
+}
+
+.cat-info{
+  display: flex;
+  flex-direction: column;
+}
