@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>checkout page</title>
     <link rel="stylesheet" href="checkout.css" />
-     <link rel="icon" type="image/x-icon" href="images/images.jpg">
+    <link rel="icon" type="image/x-icon" href="images/images.jpg" />
   </head>
   <body>
     <nav>
       <div class="left-section">
         <a href="index.html">
-  <img class="amazon-log" src="images/logo3png.png" alt="" />
+          <img class="amazon-log" src="images/logo3png.png" alt="" />
         </a>
-      
       </div>
       <div class="middle-section">
         <p>checkout (3 items)</p>
@@ -24,9 +23,51 @@
     </nav>
 
     <main>
-      <div class="order-summary  js-order-summary">
-        
-      </div>
+      <div class="order-summary js-order-summary"></div>
+
+      <div class="payment-summary">
+        <div>
+          <p class="heading">Order Summary</p>
+        </div>
+        <div class="items">
+          <div>
+            <p>items(3)</p>
+          </div>
+          <div>$42.75</div>
+        </div>
+
+        <div class="items">
+          <div>
+            <p>shipping & handling</p>
+          </div>
+          <div>$4.90</div>
+        </div>
+
+        <div class="items">
+          <div>
+            <p>Total before tax</p>
+          </div>
+          <div>$47.74</div>
+        </div>
+
+        <div class="items">
+          <div>
+            <p>Estimated tax(10%)</p>
+          </div>
+          <div>$4.77</div>
+        </div>
+
+        <div class="items">
+          <div>
+            <p>Order total</p>
+          </div>
+          <div>$52.51</div>
+        </div>
+
+        <div class="place-order">
+          <button class="place-order-btn">place your order</button>
+        </div>
+      </div>                                          
     </main>
     <script type="module" src="scripts/checkout.js"></script>
   </body>

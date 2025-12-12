@@ -13,6 +13,9 @@ export function renderCart() {
             <div class="order-name">
               <p>${product.name}</p> 
             </div>
+            <div class="age">
+               <p>${product.age}</p>
+            </div>
             <div class="order-quantity">
               <p>Quantity:${item.quantity}</p>
             </div>
