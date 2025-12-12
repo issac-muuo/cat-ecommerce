@@ -1,7 +1,9 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -9,12 +11,12 @@ nav {
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
-
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 50px;
+  z-index: 10;
 }
 
 .left-section {
@@ -49,32 +51,123 @@ nav {
   justify-content: end;
 }
 
-.order-summary{
-  max-width: 500px;
-  margin-top: 60px;
-  display: flex;
+/* Order summary grid with implicit rows */
+.order-summary {
+  grid-column: 1 / 2;
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 16px; /* gap between each order */
+  width: 100%;
 }
 
-.order{
+.order {
   display: flex;
   align-items: center;
   border: 1px solid green;
   border-radius: 7px;
+  padding: 10px;
+  gap: 12px;
 }
 
-.order-details{
+.order img {
+  width: 110px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.order-details {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-right:10px ;
+  padding-right: 10px;
+  flex: 1;
 }
 
-.remove-btn{
-  background-color:  rgb(46, 164, 79);
+.remove-btn {
+  background-color: rgb(46, 164, 79);
   border: none;
-  padding: 10px ;
+  padding: 10px;
   color: white;
   border-radius: 6px;
   font-size: 15px;
+  cursor: pointer;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 530;
+}
+
+.place-order {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.place-order-btn {
+  border: none;
+  background-color: rgb(46, 164, 79);
+  width: 100%;
+  height: 30px;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Main grid layout */
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  grid-auto-rows: auto;
+  gap: 20px;
+  padding: 24px;
+  padding-top: 90px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Payment summary in right column */
+.payment-summary {
+  grid-column: 2 / 3;
+  justify-self: center;
+  align-self: start;
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border: 1px solid rgb(46, 164, 79);
+  border-radius: 6px;
+  padding: 16px;
+  height: fit-content;
+  position: sticky;
+  top: 70px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+/* Responsive: collapse to single column */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    padding-top: 80px;
+  }
+  .payment-summary {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    position: relative;
+    top: 0;
+  }
+  .order-summary {
+    grid-row: 2;
+  }
 }
