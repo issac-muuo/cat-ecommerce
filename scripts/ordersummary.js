@@ -1,5 +1,6 @@
 import { cart, removeFromCart, cartQuantity } from "../data/cart.js";
 import { cats } from "../data/cats.js";
+import { formatCurrency } from "./utils/money.js";
 
 export function renderOrderSummary() {
   function renderCart() {
@@ -20,7 +21,7 @@ export function renderOrderSummary() {
                <p>${product.age}</p>
             </div>
             <div class="order-quantity">
-              <p>Quantity:${item.quantity}</p>
+              <p>Ksh ${formatCurrency(product.price)}</p>
             </div>
             <div>
               <button

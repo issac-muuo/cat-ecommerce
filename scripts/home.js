@@ -1,4 +1,5 @@
 import { cats } from "../data/cats.js";
+import { formatCurrency } from "./utils/money.js";
 
 renderCats();
 function renderCats() {
@@ -30,7 +31,7 @@ function renderCats() {
             </div>
           </div>
           <div class="price">
-             ${price} Ksh
+              Ksh ${formatCurrency(price)}
           </div>
           <div>
              <button class="breed-btn 
