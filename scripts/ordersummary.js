@@ -1,5 +1,6 @@
-import { cart, removeFromCart, cartQuantity } from "../data/cart.js";
+import { cart, removeFromCart, cartQuantity, addToCart } from "../data/cart.js";
 import { cats } from "../data/cats.js";
+import { renderPaymentSummary } from "./paymenySummary.js";
 import { formatCurrency } from "./utils/money.js";
 
 export function renderOrderSummary() {
@@ -33,28 +34,27 @@ export function renderOrderSummary() {
         </div>`;
       ordersummaryHTML += html;
     });
-    cartQuantity();
     document.querySelector(".js-order-summary").innerHTML = ordersummaryHTML;
   }
   renderCart();
+}
 
-  document.addEventListener("click", (event) => {
-    // Check if the clicked element has the remove button class
-    if (event.target.classList.contains("js-remove-btn")) {
-      const productId = event.target.dataset.id;
-      removeFromCart(productId);
-      renderCart();
-      alert("Item removed from cart");
-    }
-  });
-
-  document.addEventListener("click", (event) => {
+document.addEventListener("click", (event) => {
   if (event.target.classList.contains("add-to-cart")) {
     const catId = event.target.dataset.id;
     addToCart(catId);
     alert("added to cart");
-    cartQuantity()
+    cartQuantity();
   }
 });
 
-}
+document.addEventListener("click", (event) => {
+  // Check if the clicked element has the remove button class
+  if (event.target.classList.contains("js-remove-btn")) {
+    const productId = event.target.dataset.id;
+    removeFromCart(productId);
+    renderOrderSummary()
+    renderPaymentSummary()
+    alert("Item removed from cart");
+  }
+});

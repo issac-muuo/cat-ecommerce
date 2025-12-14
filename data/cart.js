@@ -38,29 +38,11 @@ export function cartQuantity() {
     cartQuantity += item.quantity;
   });
   console.log(cartQuantity);
-  document.querySelector(".items").innerHTML=`checkout (${cartQuantity} items)`
+
+  
 }
 
 cartQuantity();
 
-function calculateTotal() {
-  let total=0
-    cart.forEach((item) => {
-    const product = cats.find(cat => cat.id === item.id);
-    if (product) {
-      total += item.quantity * product.price;
-    }
-  });
 
-  // let total = 0;
-  // cart.forEach((item) => {
-  //   total += item.quantity * item.price;
-  // });
-  console.log(total)
-}
-calculateTotal()
 
-cart.forEach((catitem)=>{
-  const cat = cats.find(cat => cat.id===catitem.id)
-  console.log(cat)
-})

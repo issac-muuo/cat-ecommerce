@@ -1,5 +1,6 @@
 import { cats } from "../data/cats.js";
 import { formatCurrency } from "./utils/money.js";
+import { cartQuantity,addToCart } from "../data/cart.js";
 
 renderCats();
 function renderCats() {
@@ -44,3 +45,14 @@ function renderCats() {
   });
   document.querySelector(".js-cat-summary").innerHTML = catsHTML;
 }
+
+
+// Event delegation for dynamically created buttons
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("add-to-cart")) {
+    const catId = event.target.dataset.id;
+    addToCart(catId);
+    alert("Added to cart");
+    cartQuantity();
+  }
+});
