@@ -1,4 +1,11 @@
-import { cart, removeFromCart, cartQuantity, addToCart } from "../data/cart.js";
+import {
+  cart,
+  removeFromCart,
+  cartQuantity,
+  addToCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../data/cart.js";
 import { cats } from "../data/cats.js";
 import { renderPaymentSummary } from "./paymenySummary.js";
 import { formatCurrency } from "./utils/money.js";
@@ -18,8 +25,14 @@ export function renderOrderSummary() {
             <div class="order-name">
               <p>${product.name}</p> 
             </div>
-            <div class="age">
-               <p>${product.age}</p>
+           <div class="quantity-block">
+             <div>quantity: ${item.quantity}</div>
+             <div><button data-product-id='${
+               product.id
+             }' class="increase js-increase">+</button></div>
+             <div><button  data-product-id='${
+               product.id
+             }' class="decrease js-decrease">-</button></div>
             </div>
             <div class="order-quantity">
               <p>Ksh ${formatCurrency(product.price)}</p>
@@ -36,6 +49,7 @@ export function renderOrderSummary() {
     });
     document.querySelector(".js-order-summary").innerHTML = ordersummaryHTML;
   }
+
   renderCart();
 }
 
@@ -53,8 +67,28 @@ document.addEventListener("click", (event) => {
   if (event.target.classList.contains("js-remove-btn")) {
     const productId = event.target.dataset.id;
     removeFromCart(productId);
-    renderOrderSummary()
-    renderPaymentSummary()
+    renderOrderSummary();
+    renderPaymentSummary();
     alert("Item removed from cart");
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("js-increase")) {
+    const productId = event.target.dataset.productId;
+    increaseQuantity(productId);
+    renderOrderSummary();
+    renderPaymentSummary();
+    console.log(productId);
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("js-decrease")) {
+    const productId = event.target.dataset.productId;
+    console.log(productId);
+    decreaseQuantity(productId);
+    renderOrderSummary();
+    renderPaymentSummary();
   }
 });

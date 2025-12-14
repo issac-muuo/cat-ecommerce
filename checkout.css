@@ -171,3 +171,26 @@ main {
     grid-row: 2;
   }
 }
+
+.quantity-block {
+  width: 100%;
+  display: flex;
+}
+
+.increase{
+  padding: 0px  5px  0px  5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(46, 164, 79);
+  border: none;
+  border-radius: 3px
+}
+
+.decrease{
+  padding: 0px  5px  0px  5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(46, 164, 79);
+  border: none;
+  border-radius: 3px
+}
