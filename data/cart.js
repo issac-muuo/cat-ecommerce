@@ -1,4 +1,5 @@
-export let cart = JSON.parse(localStorage.getItem("cart"))||[];
+import { cats } from "./cats.js";
+export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(catId) {
   const existing = cart.find((item) => item.id === catId);
@@ -11,27 +12,55 @@ export function addToCart(catId) {
       quantity: 1,
     });
   }
-  saveCart()
-  console.log(cart);
+  saveCart();
 }
 
 export function removeFromCart(catId) {
-  // Find the index of the item to remove
   const index = cart.findIndex((item) => item.id === catId);
-  
+  // if the item id does not match catId -1 is retuned
   if (index !== -1) {
-    // Remove the item from the cart array
     cart.splice(index, 1);
     saveCart();
-  
+
     console.log(`Removed item ${catId} from cart`);
   } else {
     console.log(`Item ${catId} not found in cart`);
   }
 }
 
-function saveCart(){
-  localStorage.setItem("cart",JSON.stringify(cart))
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+export function cartQuantity() {
+  let cartQuantity = 0;
+  cart.forEach((item) => {
+    cartQuantity += item.quantity;
+  });
+  console.log(cartQuantity);
+  document.querySelector(".items").innerHTML=`checkout (${cartQuantity} items)`
+}
 
+cartQuantity();
+
+function calculateTotal() {
+  let total=0
+    cart.forEach((item) => {
+    const product = cats.find(cat => cat.id === item.id);
+    if (product) {
+      total += item.quantity * product.price;
+    }
+  });
+
+  // let total = 0;
+  // cart.forEach((item) => {
+  //   total += item.quantity * item.price;
+  // });
+  console.log(total)
+}
+calculateTotal()
+
+cart.forEach((catitem)=>{
+  const cat = cats.find(cat => cat.id===catitem.id)
+  console.log(cat)
+})

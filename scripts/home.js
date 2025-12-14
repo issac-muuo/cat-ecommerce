@@ -1,5 +1,4 @@
 import { cats } from "../data/cats.js";
-import { addToCart } from "../data/cart.js";
 
 renderCats();
 function renderCats() {
@@ -44,11 +43,3 @@ function renderCats() {
   });
   document.querySelector(".js-cat-summary").innerHTML = catsHTML;
 }
-
-document.addEventListener("click", (event) => {
-  if (event.target.classList.contains("add-to-cart")) {
-    const catId = event.target.dataset.id;
-    addToCart(catId);
-    alert("added to cart");
-  }
-});

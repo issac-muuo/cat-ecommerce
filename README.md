@@ -1,1 +1,2 @@
-i began using github midway in my project
+this is a website that sells cats
+
