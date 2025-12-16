@@ -16,6 +16,7 @@ export function addToCart(catId) {
     });
   }
   saveCart();
+ 
 }
 
 export function removeFromCart(catId) {
@@ -57,5 +58,7 @@ export function cartQuantity() {
   cart.forEach((item) => {
     cartQuantity += item.quantity;
   });
+
+ 
   return cartQuantity;
 }

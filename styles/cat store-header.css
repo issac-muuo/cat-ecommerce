@@ -74,3 +74,36 @@ nav {
   display: flex;
   justify-content: end;
 }
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cart-icon img {
+  width: 40px; /* adjust as needed */
+  height: 32px;
+}
+
+.cart-icon .js-cart-quantity-tag {
+  position: absolute;
+  top: -6px;         /* slightly above icon */
+  right: -6px;       /* slightly to the right */
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  min-width: 18px;
+  text-align: center;
+}

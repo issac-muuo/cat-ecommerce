@@ -1,14 +1,14 @@
 import { cats } from "../data/cats.js";
 import { formatCurrency } from "./utils/money.js";
-import { cartQuantity, addToCart,isInCart } from "../data/cart.js";
+import { cartQuantity, addToCart, isInCart} from "../data/cart.js";
 
 let filteredCats = [...cats];
 renderCats(filteredCats);
-
+cartQuantity();
 const searchInput = document.querySelector(".js-search");
 
 searchInput.addEventListener("input", () => {
-  const keyword= searchInput.value.toLowerCase();
+  const keyword = searchInput.value.toLowerCase();
 
   filteredCats = cats.filter((cat) => {
     return cat.name.toLowerCase().includes(keyword);
@@ -17,8 +17,6 @@ searchInput.addEventListener("input", () => {
   renderCats(filteredCats);
 });
 
-let searchTerm = "";
-let sortType = "";
 function renderCats(catsToRender) {
   let catsHTML = "";
   catsToRender.forEach((cat) => {
@@ -28,7 +26,7 @@ function renderCats(catsToRender) {
     let stars = cat.rating.stars;
     let rate = cat.rating.rates;
 
-    const inCart=isInCart(cat.id)
+    const inCart = isInCart(cat.id);
     let html = `
     <div class="cat-box">
         <div>
@@ -63,19 +61,22 @@ function renderCats(catsToRender) {
         </div>
       </div>`;
     catsHTML += html;
+
+    const container = document.querySelector(".js-cart-quantity-tag");
+    if (container) {
+      container.textContent = cartQuantity();
+    }
   });
   document.querySelector(".js-cat-summary").innerHTML = catsHTML;
 }
-
-
 
 // Event delegation for dynamically created buttons
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("add-to-cart")) {
     const catId = event.target.dataset.id;
     addToCart(catId);
-    renderCats(filteredCats)
+
+    renderCats(filteredCats);
     alert("Added to cart");
-    
   }
 });
