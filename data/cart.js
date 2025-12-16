@@ -1,5 +1,9 @@
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+export function isInCart(catId) {
+  return cart.some((item) => item.id === catId);
+}
+
 export function addToCart(catId) {
   const existing = cart.find((item) => item.id === catId);
 
@@ -11,7 +15,7 @@ export function addToCart(catId) {
       quantity: 1,
     });
   }
-  saveCart()
+  saveCart();
 }
 
 export function removeFromCart(catId) {
@@ -19,7 +23,7 @@ export function removeFromCart(catId) {
   // if the item id does not match catId -1 is retuned
   if (index !== -1) {
     cart.splice(index, 1);
-    saveCart()
+    saveCart();
 
     console.log(`Removed item ${catId} from cart`);
   } else {
@@ -31,14 +35,14 @@ export function increaseQuantity(productId) {
   const product = cart.find((item) => item.id === productId);
   if (product) {
     product.quantity += 1;
-    saveCart()
+    saveCart();
   }
 }
 export function decreaseQuantity(productId) {
   const product = cart.find((item) => item.id === productId);
   if (product.quantity > 1) {
     product.quantity -= 1;
-    saveCart()
+    saveCart();
   } else {
     removeFromCart(productId);
   }

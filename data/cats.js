@@ -37,7 +37,7 @@ export const cats = [
   },
   {
     id:"prd-t63b2",
-    name: "British-Shorthair",
+    name: "British Shorthair",
     Image: "images/cats/British-Shorthair.jpg",
     price: 39000,
     quantity:1,

@@ -1,6 +1,6 @@
 import { cats } from "../data/cats.js";
 import { formatCurrency } from "./utils/money.js";
-import { cartQuantity, addToCart } from "../data/cart.js";
+import { cartQuantity, addToCart,isInCart } from "../data/cart.js";
 
 let filteredCats = [...cats];
 renderCats(filteredCats);
@@ -27,6 +27,8 @@ function renderCats(catsToRender) {
     let price = cat.price;
     let stars = cat.rating.stars;
     let rate = cat.rating.rates;
+
+    const inCart=isInCart(cat.id)
     let html = `
     <div class="cat-box">
         <div>
@@ -53,7 +55,10 @@ function renderCats(catsToRender) {
           <div>
              <button class="breed-btn 
              add-to-cart"
-             data-id="${cat.id}">Get breed</button>
+             data-id="${cat.id}"
+             >
+             ${inCart ? "in cart" : "get breed"}
+             </button>
           </div>
         </div>
       </div>`;
@@ -69,7 +74,8 @@ document.addEventListener("click", (event) => {
   if (event.target.classList.contains("add-to-cart")) {
     const catId = event.target.dataset.id;
     addToCart(catId);
+    renderCats(filteredCats)
     alert("Added to cart");
-    cartQuantity();
+    
   }
 });
