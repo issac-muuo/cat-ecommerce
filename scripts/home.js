@@ -1,11 +1,27 @@
 import { cats } from "../data/cats.js";
 import { formatCurrency } from "./utils/money.js";
-import { cartQuantity,addToCart } from "../data/cart.js";
+import { cartQuantity, addToCart } from "../data/cart.js";
 
-renderCats();
-function renderCats() {
+let filteredCats = [...cats];
+renderCats(filteredCats);
+
+const searchInput = document.querySelector(".js-search");
+
+searchInput.addEventListener("input", () => {
+  const keyword= searchInput.value.toLowerCase();
+
+  filteredCats = cats.filter((cat) => {
+    return cat.name.toLowerCase().includes(keyword);
+  });
+
+  renderCats(filteredCats);
+});
+
+let searchTerm = "";
+let sortType = "";
+function renderCats(catsToRender) {
   let catsHTML = "";
-  cats.forEach((cat) => {
+  catsToRender.forEach((cat) => {
     let breed = cat.name;
     let image = cat.Image;
     let price = cat.price;
@@ -45,6 +61,7 @@ function renderCats() {
   });
   document.querySelector(".js-cat-summary").innerHTML = catsHTML;
 }
+
 
 
 // Event delegation for dynamically created buttons

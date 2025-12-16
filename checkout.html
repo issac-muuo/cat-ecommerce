@@ -26,6 +26,32 @@
       <div class="order-summary js-order-summary"></div>
 
       <div class="js-payment-summary"></div>
+
+      <section class="checkout-form">
+  <h2>Checkout Details</h2>
+
+  <form class="js-checkout-form">
+    <div>
+      <label>Full Name</label>
+      <input type="text" class="js-name" required />
+    </div>
+
+    <div>
+      <label>Phone Number</label>
+      <input type="tel" class="js-phone" required />
+    </div>
+
+    <div>
+      <label>Delivery Address</label>
+      <textarea class="js-address" required></textarea>
+    </div>
+
+    <button type="submit" class="place-order-btn">
+      Place Order
+    </button>
+  </form>
+</section>
+
     </main>
     <script type="module" src="scripts/checkout.js"></script>
   </body>

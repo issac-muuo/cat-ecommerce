@@ -1,10 +1,11 @@
-import { cart } from "../data/cart.js";
+import { cart,cartQuantity } from "../data/cart.js";
 import { cats } from "../data/cats.js";
 import { formatCurrency } from "./utils/money.js";
 export function renderPaymentSummary() {
   let paymentSummaryHTML = "";
   let priceBeforeTax = 0;
   let itemsPrice = 0;
+  const items=cartQuantity()
   cart.forEach((item) => {
     const product = cats.find((cat) => cat.id === item.id);
 
@@ -24,7 +25,7 @@ export function renderPaymentSummary() {
         </div>
         <div class="items">
           <div>
-            <p>items(3)</p>
+            <p>items(${items})</p>
           </div>
           <div>Ksh ${formatCurrency(itemsPrice)}</div>
         </div>
@@ -40,7 +41,7 @@ export function renderPaymentSummary() {
           <div>
             <p>Total before tax</p>
           </div>
-          <div>Ksh ${priceBeforeTax}</div>
+          <div>Ksh ${formatCurrency(priceBeforeTax)}</div>
         </div>
 
         <div class="items">

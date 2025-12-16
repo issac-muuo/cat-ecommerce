@@ -1,7 +1,6 @@
 import {
   cart,
   removeFromCart,
-  cartQuantity,
   addToCart,
   increaseQuantity,
   decreaseQuantity,
@@ -58,7 +57,6 @@ document.addEventListener("click", (event) => {
     const catId = event.target.dataset.id;
     addToCart(catId);
     alert("added to cart");
-    cartQuantity();
   }
 });
 
@@ -79,14 +77,12 @@ document.addEventListener("click", (event) => {
     increaseQuantity(productId);
     renderOrderSummary();
     renderPaymentSummary();
-    console.log(productId);
   }
 });
 
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("js-decrease")) {
     const productId = event.target.dataset.productId;
-    console.log(productId);
     decreaseQuantity(productId);
     renderOrderSummary();
     renderPaymentSummary();

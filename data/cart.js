@@ -1,4 +1,3 @@
-import { cats } from "./cats.js";
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(catId) {
@@ -12,7 +11,7 @@ export function addToCart(catId) {
       quantity: 1,
     });
   }
-  saveCart();
+  saveCart()
 }
 
 export function removeFromCart(catId) {
@@ -20,7 +19,7 @@ export function removeFromCart(catId) {
   // if the item id does not match catId -1 is retuned
   if (index !== -1) {
     cart.splice(index, 1);
-    saveCart();
+    saveCart()
 
     console.log(`Removed item ${catId} from cart`);
   } else {
@@ -32,8 +31,7 @@ export function increaseQuantity(productId) {
   const product = cart.find((item) => item.id === productId);
   if (product) {
     product.quantity += 1;
-    saveCart();
-    cartQuantity;
+    saveCart()
   }
 }
 export function decreaseQuantity(productId) {
@@ -41,9 +39,8 @@ export function decreaseQuantity(productId) {
   if (product.quantity > 1) {
     product.quantity -= 1;
     saveCart()
-    cartQuantity()
-  }else{
-    removeFromCart(productId)
+  } else {
+    removeFromCart(productId);
   }
 }
 
@@ -56,7 +53,5 @@ export function cartQuantity() {
   cart.forEach((item) => {
     cartQuantity += item.quantity;
   });
-  console.log(cartQuantity);
+  return cartQuantity;
 }
-
-cartQuantity();
